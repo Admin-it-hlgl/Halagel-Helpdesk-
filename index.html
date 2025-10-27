@@ -7,41 +7,94 @@
     <meta name="description" content="Halagel IT Support Helpdesk System">
     <title>Halagel Helpdesk</title>
     <link rel="manifest" href="manifest.json">
-    <!-- Remove React and use only Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Use Tailwind via CDN with specific version -->
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    
+    <!-- Use Feather Icons instead of Lucide -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
     <style>
         .btn-primary {
-            @apply bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2;
+            background: #059669;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background: #047857;
         }
         .btn-secondary {
-            @apply bg-slate-600 hover:bg-slate-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2;
+            background: #475569;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            background: #374151;
         }
         .btn-outline {
-            @apply border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2;
+            background: white;
+            color: #374151;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #d1d5db;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: #f9fafb;
         }
     </style>
 </head>
 <body class="bg-gray-50">
     <div id="app">
-        <!-- App will be loaded here -->
+        <!-- Loading message -->
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="text-center">
+                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600 mx-auto"></div>
+                <p class="mt-4 text-gray-600">Loading Halagel Helpdesk...</p>
+            </div>
+        </div>
     </div>
     
     <script src="app.js"></script>
     
     <script>
+        // Initialize Feather icons
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+        });
+        
+        // Service Worker (optional)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js');
             });
         }
-        
-        // Initialize Lucide icons after page load
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-        });
     </script>
 </body>
 </html>
