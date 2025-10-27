@@ -569,6 +569,33 @@ function CreateTicketView({ onSubmit, onCancel }) {
   );
 }
 
+// Initialize and render the app
+try {
+  const root = createRoot(document.getElementById('root'));
+  root.render(h(App));
+  console.log('App rendered successfully!');
+} catch (error) {
+  console.error('Failed to render app:', error);
+  ErrorLogger.log(error, 'App.render');
+  document.getElementById('root').innerHTML = `
+    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(to bottom right, #0f172a, #1e293b, #0f172a); color: white; font-family: system-ui;">
+      <div style="text-align: center; max-width: 500px; padding: 2rem;">
+        <h1 style="font-size: 2rem; margin-bottom: 1rem;">⚠️ Error Loading App</h1>
+        <p style="color: #94a3b8; margin-bottom: 1rem;">${error.message}</p>
+        <button onclick="location.reload()" style="background: #10b981; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: 600;">
+          Reload Page
+        </button>
+      </div>
+    </div>
+  `;
+}bg-slate-600 text-white font-semibold rounded-lg transition-colors'
+          }, 'Cancel')
+        )
+      )
+    )
+  );
+}
+
 // Login View
 function LoginView({ onLogin, onCancel }) {
   const [password, setPassword] = useState('');
