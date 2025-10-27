@@ -7,20 +7,41 @@
     <meta name="description" content="Halagel IT Support Helpdesk System">
     <title>Halagel Helpdesk</title>
     <link rel="manifest" href="manifest.json">
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <!-- Remove React and use only Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .btn-primary {
+            @apply bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2;
+        }
+        .btn-secondary {
+            @apply bg-slate-600 hover:bg-slate-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2;
+        }
+        .btn-outline {
+            @apply border border-slate-300 hover:bg-slate-50 text-slate-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2;
+        }
+    </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="bg-gray-50">
+    <div id="app">
+        <!-- App will be loaded here -->
+    </div>
+    
     <script src="app.js"></script>
+    
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js');
             });
         }
+        
+        // Initialize Lucide icons after page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
     </script>
 </body>
 </html>
